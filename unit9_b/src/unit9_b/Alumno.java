@@ -9,37 +9,37 @@ import java.util.regex.Pattern;
  */
 public class Alumno {
     public boolean validaNif(String nif) {
-        if (nif.length() != 9 || nif == null) {
-            return false;
+        if (nif.length() != 9 || nif == null) {       //a
+            return false;                             //b
         }
-        String dni = nif.substring(0, 8);
+        String dni = nif.substring(0, 8);           
         char letra = nif.charAt(8);
         Pattern pattern = Pattern.compile("[0-9]{8,8}");
         Matcher matcher = pattern.matcher(dni);
         String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
         long ldni = 0;
-        try {
-            ldni = Long.parseLong(dni);
-        } catch (NumberFormatException e) {
-            return false;
+        try {                                   //c
+            ldni = Long.parseLong(dni);         //d
+        } catch (NumberFormatException e) {     
+            return false;                       //e
         }
         int indice = (int) (ldni % 23);
         char letraEsperada = letras.charAt(indice);
-        return matcher.matches() && letra == letraEsperada;
+        return matcher.matches() && letra == letraEsperada; //f
     }   
     public float calculaTasaMatricula(int edad, boolean familiaNumerosa,
             boolean repetidor) {
-        float tasa = 500.00f;
-        if ((edad < 25) && (!familiaNumerosa) && (repetidor)) {
-            tasa = tasa + 1500.00f;
+        float tasa = 500.00f;                                       //a
+        if ((edad < 25) && (!familiaNumerosa) && (repetidor)) {     //b
+            tasa = tasa + 1500.00f;                                 //c
         } else {
-            if ((familiaNumerosa) || (edad >= 65)) {
-                tasa = tasa / 2;
+            if ((familiaNumerosa) || (edad >= 65)) {                //d
+                tasa = tasa / 2;                                    //e
             }
-            if ((edad > 50) && (edad < 65)) {
-                tasa = tasa - 100.00f;
+            if ((edad > 50) && (edad < 65)) {                       //f
+                tasa = tasa - 100.00f;                              //g
             }
         }
-        return tasa;
+        return tasa;                                                //h
     }
 }
